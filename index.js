@@ -1,13 +1,12 @@
 const   http = require("http"),
         logger = require("morgan"),
         express = require("express"),
-        mongoose = require("mongoose"),
-        dotenv = require("dotenv");
+        mongoose = require("mongoose");
 
 let app = express();
 let port = process.env.PORT || 8000;
 
-dotenv.config();
+//dotenv.config();
 
 app.use(express.json());
 app.use(logger("tiny"));

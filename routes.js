@@ -1,21 +1,12 @@
-module.exports.UPLOAD_PATH = 'uploads';
-
 const   express = require("express"),
         router = express.Router(),
-        imageCtrl = require('./image-controller'),
-        userCtrl = require("./user-controller"),
-        multer = require('multer'),
-        upload = multer({ dest: module.exports.UPLOAD_PATH });
+        mealCtrl = require("./meal-controller");
 
-router.post('/users', userCtrl.createUser);
-router.get('/users', userCtrl.getUsers);
-router.get('/users/:id', userCtrl.getUser);
-router.put('/users/:id', userCtrl.updateUser);
-router.delete('/users/:id', userCtrl.deleteUser);
+router.post('/meals', mealCtrl.createMeal);
+router.get('/meals', mealCtrl.getMeals);
+router.get('/meals/:id', mealCtrl.getMeal);
+router.put('/meals/:id', mealCtrl.updateMeal);
+router.delete('/meals/:id', mealCtrl.deleteMeal);
 
-router.post('/images', upload.single('image'), imageCtrl.uploadImage);
-router.get('/images', imageCtrl.getImages);
-router.get('/images/:id', imageCtrl.getImage);
-router.delete('/images/:id', imageCtrl.deleteImage);
 
 module.exports = router;
