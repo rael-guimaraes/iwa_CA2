@@ -3,6 +3,7 @@ const   http = require("http"),
         express = require("express"),
         bodyParcer = require("body-parser"),
         mongoose = require("mongoose");
+        cors = require("cors");
 
 let app = express();
 let port = process.env.PORT || 8000;
@@ -10,6 +11,7 @@ let port = process.env.PORT || 8000;
 app.use(bodyParcer.json());
 app.use(require('./routes'));
 app.use(logger("tiny"));
+app.use(cors({origin: 'http://localhost:4200'}));
 
 const dbURI = "mongodb://localhost/test";
 

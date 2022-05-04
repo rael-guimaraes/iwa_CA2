@@ -11,11 +11,24 @@ export class MealService {
 
   selectedMeal: Meal;
   meal: Meal[];
-  readonly baseURL = 'http://localhost:8000/meals';
+  readonly baseURL = 'https://8000-raelguimaraes-iwaca2-9fvihhtzkdm.ws-eu43.gitpod.io/meals';
+  
 
   constructor(private http: HttpClient) { }
 
-  postMeal(meal: Meal) {
-    return this.http.post(this.baseURL, meal);
+  postMeal(m: Meal) {
+    alert('works service');
+    return this.http.post(this.baseURL, m);
+  }
+  getMealList() {
+    return this.http.get(this.baseURL);
+  }
+
+  putMeal(m: Meal) {
+    return this.http.put(this.baseURL + `/${m._id}`, m);
+  }
+
+  deleteMeal(_id: string) {
+    return this.http.delete(this.baseURL + `/${_id}`);
   }
 }

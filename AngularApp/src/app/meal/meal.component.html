@@ -10,7 +10,7 @@
                                 <div class="input-field col s12">
                                     <label>Name:</label>
                                     <input type="text" name="name" #name="ngModel"
-                                        [(ngModel)]="mealService.selectedMeal.name" placeholder="Enter Meal name">
+                                        [(ngModel)]="mealService.selectedMeal.item_name" placeholder="Enter Meal name">
                                 </div>
                             </div>
                             <div class="row">
@@ -24,36 +24,37 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <button class="btn btn-custom right" type="button" (click)="resetForm(mealForm)">Reset</button>
-                                    <button class="btn btn-custom right" type="button" (click)="onSubmit(mealForm)">Submit</button>
+                                    <button class="btn btn-custom right" type="submit">Submit</button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <!-- <div class="col s7">
+
+
+
+                    <div class="col s7">
                         <table class="responsive-table highlight">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
+                                    <th>price</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tr *ngFor="let emp of employeeService.employees">
-                                <td>{{emp.name}}</td>
-                                <td>{{emp.position}}</td>
-                                <td>{{emp.office}}</td>
+                            <tr *ngFor="let meal of mealService.meal">
+                                <td>{{meal.item_name}}</td>
+                                <td>{{meal.price}}</td>
                                 <td>
-                                    <a class="action-btn" (click)="onEdit(emp)">
+                                    <a class="action-btn" (click)="onEdit(meal)">
                                         <i class="material-icons">edit</i>
                                     </a>
-                                    <a class="action-btn" (click)="onDelete(emp._id,employeeForm)">
+                                    <a class="action-btn" (click)="onDelete(meal._id,mealForm)">
                                         <i class="material-icons">delete</i>
                                     </a>
                                 </td>
                             </tr>
                         </table>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
