@@ -3,11 +3,13 @@ const   http = require("http"),
         express = require("express"),
         bodyParcer = require("body-parser"),
         mongoose = require("mongoose"),
-        dotenv = require("dotenv");
+        dotenv = require("dotenv");     
         cors = require("cors");
 
 let app = express();
 let port = process.env.PORT || 8000;
+
+dotenv.config();
 
 app.use(bodyParcer.json());
 app.use(function (req, res, next) {
@@ -32,9 +34,7 @@ app.use(require('./routes'));
 app.use(logger("tiny"));
 app.use(cors({origin: '*'}));
 
-const dbURI = "mongodb://localhost/test";
-
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
         .then((result) => console.log('connected to db'))
         .catch((err) => console.log(err)); 
 
