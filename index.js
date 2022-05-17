@@ -2,7 +2,8 @@ const   http = require("http"),
         logger = require("morgan"),
         express = require("express"),
         bodyParcer = require("body-parser"),
-        mongoose = require("mongoose");
+        mongoose = require("mongoose"),
+        dotenv = require("dotenv");
         cors = require("cors");
 
 let app = express();
