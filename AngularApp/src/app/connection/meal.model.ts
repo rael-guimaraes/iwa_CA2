@@ -1,5 +1,5 @@
 export class Meal {
     _id: string;
-    item_name: string;
+    item: string;
     price: string;
 }

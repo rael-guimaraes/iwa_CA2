@@ -15,10 +15,14 @@ declare var M: any;
 })
 export class MealComponent implements OnInit {
 
+
+  form:any;
+
   constructor(public mealService: MealService, private router: Router) { }
 
   ngOnInit(): void {
     this.resetForm();
+    this.refreshMealList();
   }
 
   resetForm(form?: NgForm) {
@@ -26,26 +30,33 @@ export class MealComponent implements OnInit {
       form.reset();
     this.mealService.selectedMeal = {
       _id: "",
-      item_name: "",
+      item: "",
       price: ""
     }
   }
 
   onSubmit(form: NgForm) {
     if (form.value._id == "") {
-      this.mealService.postMeal(form.value).subscribe((res) => {
+
+      let data = {
+        item: form.value.name,
+        price: form.value.price
+
+      };
+
+      this.mealService.postMeal(data).subscribe((res) => {
         this.resetForm(form);
-      //  this.refreshMealList();
+        this.refreshMealList();
         M.toast({ html: 'Saved successfully', classes: 'rounded' });
       });
     }
-    // else {
-    //   this.mealService.putMeal(form.value).subscribe((res) => {
-    //     this.resetForm(form);
-    //     this.refreshMealList();
-    //     M.toast({ html: 'Updated successfully', classes: 'rounded' });
-    //   });
-    // }
+    else {
+      this.mealService.putMeal(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshMealList();
+        M.toast({ html: 'Updated successfully', classes: 'rounded' });
+      });
+    }
   }
 
   refreshMealList() {

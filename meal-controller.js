@@ -1,6 +1,7 @@
 const Meal = require("./models/meal");
 
 exports.createMeal = function(req, res){
+  console.log(req.body)
     let newmeal = new Meal(req.body);
     newmeal.save(function(err, meal){
         if(err){

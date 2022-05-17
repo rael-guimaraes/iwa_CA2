@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 import{Meal} from './meal.model';
@@ -11,14 +11,22 @@ export class MealService {
 
   selectedMeal: Meal;
   meal: Meal[];
-  readonly baseURL = 'https://8000-raelguimaraes-iwaca2-9fvihhtzkdm.ws-eu43.gitpod.io/meals';
+  readonly baseURL = 'https://8000-raelguimaraes-iwaca2-5ruqrozn967.ws-eu45.gitpod.io/meals';
   
 
   constructor(private http: HttpClient) { }
 
-  postMeal(m: Meal) {
-    alert('works service');
-    return this.http.post(this.baseURL, m);
+  postMeal(m: any) {
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      })
+    };
+
+    alert(JSON.stringify(m))
+    return this.http.post(this.baseURL, m, httpOptions );
   }
   getMealList() {
     return this.http.get(this.baseURL);

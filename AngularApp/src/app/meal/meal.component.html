@@ -10,7 +10,7 @@
                                 <div class="input-field col s12">
                                     <label>Name:</label>
                                     <input type="text" name="name" #name="ngModel"
-                                        [(ngModel)]="mealService.selectedMeal.item_name" placeholder="Enter Meal name">
+                                        [(ngModel)]="mealService.selectedMeal.item" placeholder="Enter Meal name">
                                 </div>
                             </div>
                             <div class="row">
@@ -38,11 +38,11 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>price</th>
-                                    <th></th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tr *ngFor="let meal of mealService.meal">
-                                <td>{{meal.item_name}}</td>
+                                <td>{{meal.item}}</td>
                                 <td>{{meal.price}}</td>
                                 <td>
                                     <a class="action-btn" (click)="onEdit(meal)">
