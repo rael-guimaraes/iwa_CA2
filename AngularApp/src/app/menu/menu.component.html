@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage</title>
+
+</head>
+
+<body>
+
+    <img class="logo" src="assets/images/hat.gif.gif" alt="logo">
+
+    <h1>Dublin Restaurant Menu</h1>
+
+        <table class="table">
+
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+
+            <tr *ngFor="let meal of  mealService.meal">
+                <td>{{meal.item}}</td>
+                <td>{{meal.price}}</td>
+            </tr>
+
+        </table>
+
+    <footer>
+        <div class="footer">
+            <div class="wrapper">
+                <p class="text-center">Copyright © 2022Rael Guimaraes All rights
+                    reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

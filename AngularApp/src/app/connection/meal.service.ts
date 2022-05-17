@@ -11,7 +11,7 @@ export class MealService {
 
   selectedMeal: Meal;
   meal: Meal[];
-  readonly baseURL = 'https://8000-raelguimaraes-iwaca2-5ruqrozn967.ws-eu45.gitpod.io/meals';
+  readonly baseURL = 'https://iwa-ca2-rael.herokuapp.com/meals';
   
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,6 @@ export class MealService {
       })
     };
 
-    alert(JSON.stringify(m))
     return this.http.post(this.baseURL, m, httpOptions );
   }
   getMealList() {
